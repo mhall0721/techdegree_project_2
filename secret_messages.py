@@ -3,7 +3,7 @@ import os
 from ciphers import Cipher
 from affine import Affine  
 from atbash import Atbash
-from keyword import Keyword
+from keyword_cipher import Keyword
 
 
 def clear():
@@ -73,8 +73,8 @@ def run_cipher(encrypt=True):
 
     affine_input = [1, '1', 'af']
     atbash_input = [2, '2', 'at']
-    keyword_input = [3, '3', 'k']
-    valid_input = affine_input + atbash_input + keyword_input
+    keyword_cipher_input = [3, '3', 'k']
+    valid_input = affine_input + atbash_input + keyword_cipher_input
 
     if user_input.lower() == "q":
         return "q"
@@ -112,7 +112,7 @@ def run_cipher(encrypt=True):
         cipher = Atbash()
 
     # Keyword inputs
-    if user_input in keyword_input:
+    if user_input in keyword_cipher_input:
         user_keyword = input("Please enter your keyword for the Keyword Cipher:\n")
 
         while text.lower().isalpha() is False:
@@ -120,11 +120,10 @@ def run_cipher(encrypt=True):
             user_keyword = input("Please enter keyword for the Keyword Cipher:\n")
 
         cipher = Keyword(user_keyword)
-
-    
-
+    else:
+        
         val = cipher.decrypt(text)
-
+         
     return val
 
 if __name__ == "__main__":
