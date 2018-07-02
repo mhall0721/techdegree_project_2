@@ -115,7 +115,7 @@ def run_cipher(encrypt=True):
     if user_input in keyword_cipher_input:
         user_keyword = input("Please enter your keyword for the Keyword Cipher:\n")
 
-        while text.lower().isalpha() is False:
+        while user_keyword.lower().isalpha() is False:
             print("Message must contain letters only.\n")
             user_keyword = input("Please enter keyword for the Keyword Cipher:\n")
 
