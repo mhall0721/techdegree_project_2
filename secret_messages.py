@@ -1,5 +1,4 @@
 import os 
-import string 
 
 from ciphers import Cipher
 from affine import Affine  
@@ -60,7 +59,7 @@ def user_interface():
 
 def run_cipher(encrypt=True):
     """Sub menu with a list of implemented ciphers."""
-    global key_val      
+    global key_val     
     clear()
     prompt = "Choose a cipher to use:\n\n"
     prompt += "1) (Af)fine\n"
@@ -89,7 +88,7 @@ def run_cipher(encrypt=True):
 
     text = ask_for_message()
 
-    while text.lower().replace(" ", "").isalpha() is False:
+    while text.lower().isalpha() is False:
         print("Message must contain letters only.\n")
         text = ask_for_message()
 
@@ -115,15 +114,21 @@ def run_cipher(encrypt=True):
     if user_input in keyword_cipher_input:
         user_keyword = input("Please enter your keyword for the Keyword Cipher:\n")
 
-        while user_keyword.lower().isalpha() is False:
+        while text.lower().isalpha() is False:
             print("Message must contain letters only.\n")
             user_keyword = input("Please enter keyword for the Keyword Cipher:\n")
 
         cipher = Keyword(user_keyword)
-            
-    key_val = cipher.decrypt(text)
-        
+    
+    if encrypt:
+        key_val = cipher.encrypt(text)
+
+    else:
+        key_val = cipher.decrypt(text)
+
+    
     return key_val
+            
 
 if __name__ == "__main__":
     user_interface()
